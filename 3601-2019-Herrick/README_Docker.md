@@ -6,7 +6,7 @@ A repository of data science containers that use a CentOS base. This works well 
 Currently we have the following containers:
 1. __base__: This container is the base for all other containers in this repository. It builds from a CentOS 7 image hosted on Docker Hub, and we then install Python 3.7.2 and SQLite, as well as other necessary yum packages. The intent is that this base image reflect a standard, base Python 3 development configuration. **BUILD THIS CONTAINER FIRST**.
 
-2. __jupyter__:  This container adds python-swat as well as the standard data science python packages, Jupyter Notebook, and some notebook extensions. Additionally this container manages security certificates needed to access your specific CAS server. When running, this container exposes port 8888 and we can access Jupyter Notebook hosted by the container on `http://localhost:8888`. There is currently no token security enabled on this notebook instance, since it is intended to run locally only at this time. If you ever expose it outside your local system, make sure to turn the token authorization on again.
+2. __jupyter__:  This container adds python-swat as well as the standard data science python packages, Jupyter Notebook, and some notebook extensions. Additionally this container manages security certificates needed to access your specific CAS server. When running, this container exposes port 8888 and we can access Jupyter Notebook hosted by the container on `http://localhost:8888`. There is currently no token security enabled on this notebook instance, since it is intended to run locally only at this time. If you ever expose it outside your local system, make sure to turn the token authorization on again. If you'd rather use Jupyterlab for your notebooks, that is included as well. You can access that by going to `http://localhost:8888/lab`.
 
 
 Building the containers:
@@ -24,7 +24,9 @@ Running the container:
 * To run any container based on our Jupyter image, we need to include a mapping to a local folder that contains our notebooks. Anything we add to this folder will be visible inside the container, so we can add notebooks or data files if needed.
 * Start the container by typing: `./run_container.sh <your-fully-qualified-path-to-your-notebooks> <container-name>`
     * Don't include `centos-ds` in the container name. In other words, at this time you'd use either `jupyter` or `pyspark`.
-* It should echo back a long token, but if the notebook doesn't successfully start, the container silently exits. Thus test for success by typing: `docker container ls`
+* It should echo back a long token, but if the notebook doesn't successfully start, the container silently exits. Thus test for success by typing: `docker container ls` or more simply, `docker ps`. The container should be named `viya_jupyter`.
 * If the container is successfully running, open a browser tab and go to: `http://localhost:8888`. You should see the Jupyter notebook home page, with all of your local notebooks showing up in the list.
+* To quit the container, either shutdown the Jupyter server from the web interface, or from a terminal prompt type: `docker kill viya_jupyter`.
+
 
 From this point you can develop as you desire.

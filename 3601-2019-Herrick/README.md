@@ -12,8 +12,10 @@ We chose the language, tools, and architecture presented here specifically for t
 
 Find the full paper online with the [SAS Global Forum proceedings](https://www.sas.com/en_us/events/sas-global-forum/program/proceedings.html).
 
+The examples in the paper rely on data from the [Unified Host and Network](https://csr.lanl.gov/data/2017.html) dataset provided by Los Alamos National laboratories. One sample dataset representing an hour of Windows Host Events is provided in CSV format with this repository. The full dataset can be downloaded from the link above. It is provided as full-day files compressed as `.bz2`. If you would like to work with any netflow files or different Windows Host files, I recommend dividing a full day into multiple hourly files. This makes it easier to run your data analyses, and is similar to how data is processed in the SAS Cybersecurity solution. Feel free to contact me at the email listed below, and I can provide a simple Python script to split a day file into hourlies.
+
 ## Support contact(s)
 
-Damian Herrick  
-SAS Institute, Inc.  
+Damian Herrick
+SAS Institute, Inc.
 [Damian.Herrick@sas.com](Damian.Herrick@sas.com)
